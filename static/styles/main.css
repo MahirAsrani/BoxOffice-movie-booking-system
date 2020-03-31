@@ -1,0 +1,50 @@
+.slide {
+    margin-top: -65px;
+}
+.carousel-inner {
+    background: radial-gradient(#3a3a3a, black);
+}
+.carousel-inner img {
+    height: 600px;
+    margin: 0px auto;
+}
+
+.s1 {
+    background-image: url(../images/1.jpg);
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s2 {
+    background-image: url(../images/2.jpg);
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s3 {
+    background-image: url(../images/3.jpg);
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s4 {
+    background-image: url(../images/4.jpg);
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.s5 {
+    background-image: url(../images/5.jpg);
+    height: 600px;
+    background-position: -10px -150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#logo {
+    text-decoration: none;
+    color: white;
+}

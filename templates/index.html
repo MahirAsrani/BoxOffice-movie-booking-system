@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>BoxOffice | Home</title>
+{% endblock %}
+
+{% block content %}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="s1"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="s2"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="s3"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="s4"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="s5"></div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-10 offset-2 m-5">
+                    <h1>Now Showcasing</h1>
+                </div>
+            </div>
+            <div class="row">
+
+                {% for movie in mov %}
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+                    <a href="/movies/{{movie.pk}}">
+                        <div class="card shadow" style="width: 18rem; margin:0px auto;">
+                            <img src="{{ movie.movie_poster.url }}" class="card-img-top" height="380px">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{ movie.movie_name }}</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

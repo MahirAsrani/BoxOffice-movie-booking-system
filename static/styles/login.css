@@ -1,0 +1,42 @@
+body {
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.btn-primary {
+  background-image: linear-gradient(45deg, #ce1212, #e77c24);
+  border-radius: 15px;
+  border: none;
+  width: 250px;
+  margin-top: 10px;
+}
+
+.login {
+  background-color: rgba(47, 54, 54, 0.57);
+  height: 400px;
+  margin: 80px 40px;
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 16px 13px 40px #0a0000;
+
+}
+
+.register {
+  background-color: rgba(47, 54, 54, 0.57);
+  margin: 80px 20px;
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 16px 13px 40px #0a0000;
+
+}
+.cinema {
+  background-color: rgba(47, 54, 54, 0.57);
+  margin: 80px 20px;
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 16px 13px 40px #0a0000;
+
+}

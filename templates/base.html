@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block title%}{% endblock %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <script src="https://kit.fontawesome.com/7dd9aac670.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href={% static "styles/main.css" %}>
+    {% block style %}{% endblock %}
+
+    <style>
+            .search-text {
+                border-radius: 30px 0px 0px 30px;
+            }
+    
+            .search {
+                border-radius: 0px 30px 30px 0px;
+                width: 45px;
+                color: white;
+                background: linear-gradient(45deg, #ef2c3f, #dc3545);
+            }
+    </style>    
+
+</head>
+  <body>
+      
+    <nav class="navbar sticky-top" style="background-color: #0000006b">
+        <div class="col-lg-3 col-md-4 col-8">
+            <h2 class="text-white"> <a role="button" href={% url 'index' %} style="text-decoration: none; color: white;" ><i class="fa fa-video-camera"></i> BoxOffice</a></h2>
+        </div>
+        <div class="col-lg-5 col-4 d-none d-md-inline">
+                <form class="row" action="#" method="GET">
+                    <div class="input-group col-12">
+                        <input type="search" class="form-control search-text" placeholder="Search Movies">
+                        <button type="submit" class="btn search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="col-lg-3 col-4">
+                <div class="dropdown">
+                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-user" aria-hidden="true"></i> {{user.first_name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% if user.cinema.role == 'cinema_manager' %}
+                            <a class="dropdown-item" href="{% url 'dashboard' %}"> <i class="fa fa-edit"></i> Dashboard</a>
+                            {% else %}
+                            <a class="dropdown-item" href="{% url 'profile' %}"> <i class="fa fa-edit"></i> Profile</a>
+                            <a class="dropdown-item" href="{% url 'bookings' %}"> <i class="fa fa-ticket"></i> Bookings</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+                        </div>
+                </div>
+        </div>
+        {%  else  %}
+        <div class="col-lg-3 col-12 mt-2">
+            <div class="row no-gutters">
+                <div class="col mr-1">
+                    <a class="btn btn-danger d-block" href="{% url 'register' %}" role="button"> Sign Up </a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-danger d-block" href="{% url 'login' %}" role="button"> Sign In </a> 
+                </div>
+            </div>    
+        </div>
+        {% endif %}
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+
+    {% block JQuery %}
+    {% endblock %}
+
+</body>
+</html>

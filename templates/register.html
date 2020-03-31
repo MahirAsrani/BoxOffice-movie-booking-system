@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>BoxOffice | Home</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href={% static "styles/login.css" %} />
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="col-lg-5 col-12">
+            <form action="register" method="POST" class="text-white register">
+                {% csrf_token %}
+
+                    <h1>Registration</h1>
+
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input class="form-control" type="text" placeholder="username" name="username">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6 col-12">
+                    <label class="form-label "> First Name</label>
+                    <input class="form-control" type="text" placeholder="firstname" name="firstname">
+                </div>
+                <div class="form-group col-md-6 col-12">
+                    <label class="form-label ">Last Name</label>
+                    <input class="form-control" type="text" placeholder="lastname" name="lastname">
+                </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><i class="fa fa-envelope-o" aria-hidden="true"></i> E-mail</label>
+                    <input class="form-control" type="email" placeholder="@" name="email">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6 col-12">
+                    <label class="form-label ">Password</label>
+                    <input class="form-control" type="password" placeholder="pass" name="password1">
+                </div>
+                <div class="form-group col-md-6 col-12">
+                    <label class="form-label ">Repeat Password</label>
+                    <input class="form-control" type="password" placeholder="pass" name="password2">
+                </div>
+                </div>
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Register">
+                <a href="/accounts/register_cinema" class="btn btn-primary btn-block" style="width: 100%">Register as Cinema</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% for message in messages %}
+<h4> {{message}} </h4>
+{% endfor %}
+
+{% endblock %}

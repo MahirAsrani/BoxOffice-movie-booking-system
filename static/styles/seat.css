@@ -1,0 +1,115 @@
+.bottom {
+  background-color: #213e42;
+  padding: 15px;
+}
+
+.hall {
+  margin-top: -65px;
+  padding: 100px 0px 50px;
+}
+
+.hall__screen {
+  margin: 0 auto;
+  height: 230px;
+  width: 850px;
+  margin-bottom: -15px;
+  background-image: url(https://images.indianexpress.com/2019/07/kabir-singh-759-2.jpg);
+  background-size: cover;
+  background-position: center;
+  transform: perspective(1000px) rotateX(-30deg);
+  overflow: hidden;
+  box-shadow: 0 40px 55px -17px rgba(255, 255, 255, 0.2);
+}
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  transform: perspective(1000px) rotateX(50deg);
+  width: 1000px;
+  margin: 0px auto;
+  align-items: center;
+}
+
+.seat {
+    width: 39.6px;
+    height: 44px;
+    border-radius: 4px 4px 8px 8px;
+    background: #cc1f2f;
+    background: linear-gradient(#cc1f2f 0%, #cc1f2f 70%, #000 70%, #cc1f2f 77%);
+    position: relative;
+    border: 1px solid #000;
+    margin: 5px;
+    display: inline-block;
+  }
+  .seat:after, .seat:before {
+    content: '';
+    display: block;
+    width: 7.3333333333px;
+    height: 24.4444444444px;
+    position: absolute;
+    background: #cc1f2f;
+    border-radius: 4px;
+    border: 1px solid #000;
+    bottom: 5.5px;
+  }
+  .seat:before {
+    left: -4.4px;
+  }
+  .seat:after {
+    right: -4.4px;
+  }
+  .seat.notvacant {
+    background: #ccc;
+    background: linear-gradient(#ccc 0%, #ccc 70%, #000 70%, #ccc 77%);
+  }
+  .seat.notvacant:before, .seat.notvacant:after {
+    background: #ccc;
+  }
+  
+  .space {
+    width: 66px;
+    display: inline-block;
+  }
+  
+  
+  
+  
+  
+  
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+    
+     
+    .seat label {
+      cursor: pointer;
+      position: absolute;
+      background: #f1f1f100;
+      border-radius: 0px 0px 3px 3px;
+      width: 35px;
+      height: 35px;
+      left: 2px;
+      top: 3px;
+    }  
+    .seat label:after {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 30px;
+      border-radius: 5px;
+      height: 25px;
+      background: #ff9800;
+      top: 0;
+      left: 2px;
+  }
+    
+    .seat label:hover::after {
+      filter: alpha(opacity=30);
+      opacity: 0.3;
+    }
+    
+    .seat input[type=checkbox]:checked + label:after {
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }

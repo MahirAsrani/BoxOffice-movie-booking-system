@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>BoxOffice | Profile</title>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-image: linear-gradient(250deg, #dc3545, #FF9800);
+        height: 100vh;
+    }
+
+    .imge {
+        background-image: url(/static/images/customer.png);
+        max-height: 450px;
+        background-size: cover;
+        background-position: -120px 0px;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .bck {
+        border-radius: 20px;
+        border: none;
+    }
+
+    label {
+        margin: 10px 0px 3px 0px;
+    }
+
+    .submit {
+        background-image: linear-gradient(25deg, #fa8a09, #df3e3f);
+        color: white;
+        border: none;
+        margin-top: 12%;
+    }
+
+    .submit:hover {
+        background-image: none;
+        border: 1px solid #df3e3f;
+        font-weight: 600;
+    }
+
+    .alert {
+        bottom: 5px;
+        right: 25px;
+        position: absolute;
+        z-index: 15;
+        width: 500px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    {% for message in messages%}
+    <div class="alert alert-{{ message.tags }} fade show" role="alert">
+        {{ message }} 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    
+    <div class="row justify-content-center">
+        <div class="col-8 card shadow mt-5 bck">
+            <div class="row">
+                <div class="col-4 imge"></div>
+                <div class="col-8 p-4">
+
+
+                    <form action="profile" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group row justify-content-center">
+                            <div class="col-12">
+                                <label>Username</label>
+                                <input type="text" value="{{user}}" class="form-control" name="username" required>
+                            </div>
+                            <div class="col-6">
+                                <label>First Name</label>
+                                <input type="text" value="{{user.first_name}}" class="form-control" name="fn" required>
+                            </div>
+                            <div class="col-6">
+                                <label>Last Name</label>
+                                <input type="text" value="{{user.last_name}}" class="form-control" name="ln" required>
+                            </div>
+                            <div class="col-12">
+                                <label>E-mail</label>
+                                <input type="text" value="{{user.email}}" class="form-control" name="email" required>
+                            </div>
+                            <div class="col-6">
+                                <label>Old Password</label>
+                                <input type="password" class="form-control" name="old" required>
+                            </div>
+                            <div class="col-6">
+                                <label>New Password</label>
+                                <input type="password" value="" class="form-control" name="new" required>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-lg btn-block submit">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block JQuery %}
+<script>
+</script>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>BoxOffice | Profile</title>
+{% endblock %}
+
+{% block style %}
+<style>
+    #wrapper {
+        display: flex;
+        margin-top: -62px;
+    }
+
+    .sidebar {
+        width: 19rem !important;
+        background: linear-gradient(0deg, #2196F3, #00106b);
+        padding-top: 80px;
+    }
+
+    #content-wrapper {
+        background-color: #e6e6e6;
+        width: 100%;
+        height: 100vh;
+        padding-top: 60px;
+        overflow-x: hidden;
+    }
+
+    .active {
+        background: white;
+        box-shadow: -1px 1px 13px 2px;
+    }
+
+    .nav-item:hover {
+        background: #e0e0e0;
+        box-shadow: -1px 1px 13px 2px;
+    }
+
+    .active-link,
+    .nav-link:hover {
+        color: #021045;
+        display: block;
+        padding: .5rem 0rem;
+    }
+
+    .nav-item {
+        padding: 0px 20px;
+        border-radius: 10px;
+        margin: 5px 5px;
+    }
+
+    .nav-item a {
+        font-size: 19px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #021045;
+    }
+
+    a.nav-link {
+        color: white;
+    }
+
+    i {
+        padding-right: 5px;
+    }
+
+    .round {
+        padding: 20px;
+        border-radius: 20px;
+        min-height: 250px;
+    }
+
+    .poster {
+        margin: 15px;
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar ">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'dashboard' %}">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="active-link" href="{% url 'add_shows' %}">
+                <i class="fa fa-ticket"></i>
+                <span>Add Shows</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'earnings' %}">
+                <i class="fas fa-rupee-sign    "></i>
+                <span>Earnings</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span></a>
+        </li>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div class="row m-3">
+            <div class="col-12 card round">
+                <h5 class="display-4">Add Shows at {{user.cinema.cinema_name}}</h5>
+                <hr>
+
+
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+
+                <div class="row p-4">
+                    <div class="col-12">
+                        <form action="{% url 'add_shows' %}" method="POST">
+                                {% csrf_token %}
+                            <div class="form-row justify-content-center">
+                                <div class="col-5">
+                                    <select id="inputState" class="form-control" name="m">
+                                        <option>Choose Movie</option>
+                                        {% for list in mov %}
+                                        <option value="{{list.movie}}">{{ list.movie_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="date" class="form-control" placeholder="Date" name="d">
+                                </div>
+                                <div class="col-2">
+                                    <input type="time" class="form-control" placeholder="Time" name="t">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" placeholder="Ticket Price (Rs)" name="p">
+                                </div>
+                            </div>
+                            <div class="col-3 mt-4">
+                                <input type="submit" class="btn btn-block btn-primary">
+                            </div>
+                    </div>
+                    </form>
+                </div>
+
+                {% for movie in list %}
+                <div class="col-3 poster p-0 shadow card text-center">
+                    <img src="/media/{{movie.movie__movie_poster}}" class="img-fluid" alt="Misisng Poster">
+                    <h5 class="p-3">{{movie.movie__movie_name}}</h5>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="col-12 card round mt-2">
+                    <h3 class="">All Shows at {{user.cinema.cinema_name}}</h3>
+                    <hr>
+                
+                    <table class="table shadow text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" width="5%">ID</th>
+                                    <th scope="col">Movie</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Date (YYYY/MM/DD)</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for list in s %}
+                                    <tr>
+                                        <th scope="row">{{list.shows}}</th>
+                                        <td>{{list.movie.movie_name}}</td>
+                                        <td>{{list.time}}</td>
+                                        <td>{{list.date}}</td>
+                                        <td>Rs. {{list.price}}</td>
+                                    </tr>
+                                        {% endfor %}
+                            </tbody>
+                        </table>
+                    
+                </div>
+
+        </div>
+    </div>
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+
+
+
+{% endblock %}
+
+
+{% block JQuery %}
+<script>
+</script>
+{% endblock %}
