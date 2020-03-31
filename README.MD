@@ -8,6 +8,11 @@ work for managing the Movie, Tickets, Audi, Booking. It tracks all the details a
 Timing, Customer.
 
 ## Screenshots 
+![alt text](https://user-images.githubusercontent.com/23280462/78024964-dbd92e00-7376-11ea-9dea-fe8c6ccee058.jpg)
+![alt text](https://user-images.githubusercontent.com/23280462/78024974-de3b8800-7376-11ea-9231-ed3ff707eb68.png)
+![alt text](https://user-images.githubusercontent.com/23280462/78024970-dd0a5b00-7376-11ea-9f7b-29735c7a0e91.png)
+
+
 
 ## Live Demo
 [https://boxofficeonline.herokuapp.com](https://boxofficeonline.herokuapp.com/)
@@ -20,8 +25,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-MySQL for database
-Python 3
+* MySQL for database
+* Python 3
 
 ### Installing
 A step by step series of examples that tell you how to get a development env running
@@ -43,11 +48,11 @@ A step by step series of examples that tell you how to get a development env run
 
 ## Built With
 
-* [Bootstrap](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Python](https://maven.apache.org/) - Dependency Management
-* [MySQL](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Bootstrap](https://getbootstrap.com/) - UI Components
+* [Django](https://www.djangoproject.com/) - Python web framework
+* [MySQL]() - Used for Database
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
